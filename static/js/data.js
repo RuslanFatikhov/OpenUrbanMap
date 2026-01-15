@@ -1,14 +1,34 @@
+const STORAGE_KEY = "openurbanmap-data";
+
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp(`(?:^|; )${name}=([^;]*)`));
+  return match ? decodeURIComponent(match[1]) : "";
+}
+
+function setCookie(name, value) {
+  const maxAge = 60 * 60 * 24 * 365 * 10;
+  document.cookie = `${name}=${encodeURIComponent(value)}; Max-Age=${maxAge}; Path=/; SameSite=Lax`;
+}
+
+function loadPersistedData() {
+  const raw = getCookie(STORAGE_KEY);
+  if (!raw) {
+    return { ok: true, data: { lines: [], trafficLights: [] } };
+  }
+  try {
+    return { ok: true, data: JSON.parse(raw) };
+  } catch (error) {
+    return { ok: false, error: "Corrupted data in cookies." };
+  }
+}
+
 function persistData() {
   if (state.loadError) {
     return;
   }
   clearTimeout(persistData._timeout);
   persistData._timeout = setTimeout(() => {
-    fetch("/api/data", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(state.data),
-    });
+    setCookie(STORAGE_KEY, JSON.stringify(state.data));
   }, 300);
 }
 
