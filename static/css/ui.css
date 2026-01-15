@@ -312,3 +312,13 @@ button{
   max-width: 240px;
   z-index: 3;
 }
+
+
+.hstack{
+  display: flex;
+  flex-direction: row !important;
+}
+
+.sb{
+  justify-content: space-between !important;
+}

@@ -32,6 +32,9 @@ const map = new mapboxgl.Map({
   ],
 });
 
+window.map = map;
+window.state = state;
+
 map.addControl(new mapboxgl.NavigationControl({ showCompass: false }));
 
 const messageEl = document.getElementById("message");

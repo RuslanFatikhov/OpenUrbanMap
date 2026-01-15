@@ -10,6 +10,12 @@ function refreshLists() {
     item.className = "layer-item";
     const name = line.properties.name || `Line ${idx + 1}`;
     item.innerHTML = `<div class="layer-item-title">${name}</div>`;
+    item.addEventListener("click", () => {
+      state.editingLineId = null;
+      map.setFilter("line-selected", ["all", ["==", ["get", "visible"], true], ["==", ["get", "id"], line.id]]);
+      openModalForLine(line.id);
+      refreshSources();
+    });
 
     const actions = document.createElement("div");
     actions.className = "layer-actions";
@@ -42,14 +48,12 @@ function refreshLists() {
     actions.className = "layer-actions";
     const lightVisibilityIcon = light.visible === false ? "/static/icon/close.svg" : "/static/icon/open.svg";
     actions.appendChild(actionButton("Hide", lightVisibilityIcon, () => {
-      hideModal();
       light.visible = light.visible === false ? true : false;
       refreshSources();
       persistData();
       refreshLists();
     }));
     actions.appendChild(actionButton("Delete", "/static/icon/trash.svg", () => {
-      hideModal();
       deleteLight(light.id);
     }));
 
@@ -67,6 +71,9 @@ function actionButton(text, iconPath, handler) {
   img.alt = "";
   img.className = "tool-icon";
   btn.appendChild(img);
-  btn.addEventListener("click", handler);
+  btn.addEventListener("click", (event) => {
+    event.stopPropagation();
+    handler();
+  });
   return btn;
 }

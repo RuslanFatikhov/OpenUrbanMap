@@ -5,6 +5,15 @@ function collectRoadLayerIds() {
     .map((layer) => layer.id);
 }
 
+const ALLOWED_ROAD_CLASSES = [
+  "trunk",
+  "primary",
+  "secondary",
+  "residential",
+  "tertiary",
+  "service",
+];
+
 function snapToRoadOrEndpoint(lngLat) {
   // Snapping logic: find nearest allowed OSM road centerline within 20m,
   // or snap to existing line endpoints if they are closer (supports extending lines).
@@ -32,7 +41,7 @@ function snapToRoadOrEndpoint(lngLat) {
   ];
 
   const features = map.queryRenderedFeatures(bbox, { layers: state.roadLayerIds });
-  const allowedClasses = new Set(["trunk", "primary", "secondary", "residential", "service"]);
+  const allowedClasses = new Set(ALLOWED_ROAD_CLASSES);
 
   let closestRoad = null;
 

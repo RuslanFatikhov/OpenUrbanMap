@@ -18,47 +18,31 @@ map.on("load", () => {
     data: { type: "FeatureCollection", features: [] },
   });
 
+  /* Map Label: arrow glyph styling */
   map.addLayer({
     id: "lines",
     type: "line",
     source: "lines",
     paint: {
-      "line-color": "#2f5d62",
+      "line-color": ROUTE_STYLE.lineColor,
       "line-width": 4,
     },
     filter: ["==", ["get", "visible"], true],
   });
 
+  /* Map Label: line label styling */
   map.addLayer({
     id: "line-selected",
     type: "line",
     source: "lines",
     paint: {
-      "line-color": "#b0562c",
+      "line-color": ROUTE_STYLE.lineColor,
       "line-width": 6,
     },
     filter: ["all", ["==", ["get", "visible"], true], ["==", ["get", "id"], ""]],
   });
 
-  map.addLayer({
-    id: "line-arrows",
-    type: "symbol",
-    source: "lines",
-    layout: {
-      "symbol-placement": "line",
-      "text-field": ["get", "arrowGlyph"],
-      "text-size": 14,
-      "text-rotation-alignment": "map",
-    },
-    paint: {
-      "text-color": "#1c1b19",
-    },
-    filter: [
-      "all",
-      ["==", ["get", "visible"], true],
-      ["==", ["get", "oneWay"], true],
-    ],
-  });
+  // line-arrows layer disabled (Canvas arrows are used instead)
 
   map.addLayer({
     id: "line-labels",
@@ -68,12 +52,12 @@ map.on("load", () => {
       "symbol-placement": "line",
       "text-field": ["get", "displayName"],
       "text-size": 12,
-      "text-offset": [0, 0.8],
+      "text-offset": [0, 1],
     },
     paint: {
-      "text-color": "#1c1b19",
-      "text-halo-color": "#fffaf1",
-      "text-halo-width": 1,
+      "text-color": "#1F6AE1",
+      "text-halo-color": "#fefefe",
+      "text-halo-width": 100,
     },
     filter: ["==", ["get", "visible"], true],
   });
@@ -83,7 +67,7 @@ map.on("load", () => {
     type: "line",
     source: "drawing-line",
     paint: {
-      "line-color": "#b0562c",
+      "line-color": ROUTE_STYLE.lineColor,
       "line-width": 3,
       "line-dasharray": [1.5, 1.5],
     },
@@ -147,6 +131,9 @@ map.on("load", () => {
       state.data = payload.data;
       refreshSources();
       refreshLists();
+      if (typeof ArrowCanvasOverlay !== "undefined") {
+        ArrowCanvasOverlay.redraw();
+      }
     });
 });
 
@@ -159,7 +146,6 @@ map.on("click", (event) => {
     openModalForLine(lineId);
     return;
   }
-  hideModal();
 
   if (!isWithinBounds(event.lngLat)) {
     showMessage("Interaction is limited to Almaty.");
@@ -245,11 +231,14 @@ const modalInputs = [
 ];
 
 modalInputs.forEach((id) => {
-  document.getElementById(id).addEventListener("input", updateDraftFromModal);
-  document.getElementById(id).addEventListener("change", updateDraftFromModal);
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("input", updateDraftFromModal);
+  el.addEventListener("change", updateDraftFromModal);
 });
 
-document.getElementById("reverse-direction").addEventListener("click", () => {
+const reverseBtn = document.getElementById("reverse-direction");
+if (reverseBtn) reverseBtn.addEventListener("click", () => {
   if (!state.modalDraft) return;
   state.modalDraft.arrowDirection = state.modalDraft.arrowDirection === -1 ? 1 : -1;
   if (!state.modalDraft.oneWay) {
@@ -259,24 +248,36 @@ document.getElementById("reverse-direction").addEventListener("click", () => {
     document.getElementById("line-forward-lanes").value = state.modalDraft.lanesForward ?? "";
     document.getElementById("line-backward-lanes").value = state.modalDraft.lanesBackward ?? "";
   }
+  const line = state.data.lines.find((item) => item.id === state.selectedLineId);
+  if (line) {
+    line.properties.arrowDirection = state.modalDraft.arrowDirection;
+    refreshSources();
+    if (typeof ArrowCanvasOverlay !== "undefined") {
+      ArrowCanvasOverlay.redraw();
+    }
+  }
 });
 
-document.getElementById("save-line").addEventListener("click", (event) => {
+const saveBtn = document.getElementById("save-line");
+if (saveBtn) saveBtn.addEventListener("click", (event) => {
   event.preventDefault();
   saveModalChanges();
 });
 
-document.getElementById("edit-geometry").addEventListener("click", () => {
+const editBtn = document.getElementById("edit-geometry");
+if (editBtn) editBtn.addEventListener("click", () => {
   if (!state.selectedLineId) return;
   toggleEditLine(state.selectedLineId, true);
 });
 
-document.getElementById("delete-line").addEventListener("click", () => {
+const deleteBtn = document.getElementById("delete-line");
+if (deleteBtn) deleteBtn.addEventListener("click", () => {
   if (!state.selectedLineId) return;
   deleteLine(state.selectedLineId);
 });
 
-document.getElementById("close-modal").addEventListener("click", (event) => {
+const closeBtn = document.getElementById("close-modal");
+if (closeBtn) closeBtn.addEventListener("click", (event) => {
   event.preventDefault();
   event.stopPropagation();
   closeModalDiscard();
@@ -285,24 +286,25 @@ document.getElementById("close-modal").addEventListener("click", (event) => {
 function setTool(tool) {
   state.currentTool = tool;
   updateToolButtons();
-  hideModal();
 }
 
-document.getElementById("tool-line").addEventListener("click", () => setTool("line"));
-document.getElementById("tool-light").addEventListener("click", () => setTool("light"));
+const toolLine = document.getElementById("tool-line");
+if (toolLine) toolLine.addEventListener("click", () => setTool("line"));
+const toolLight = document.getElementById("tool-light");
+if (toolLight) toolLight.addEventListener("click", () => setTool("light"));
 
-document.getElementById("export-kmz").addEventListener("click", () => {
-  hideModal();
+const exportKmz = document.getElementById("export-kmz");
+if (exportKmz) exportKmz.addEventListener("click", () => {
   window.location.href = "/api/export/kmz";
 });
 
-document.getElementById("export-geojson").addEventListener("click", () => {
-  hideModal();
+const exportGeo = document.getElementById("export-geojson");
+if (exportGeo) exportGeo.addEventListener("click", () => {
   window.location.href = "/api/export/geojson";
 });
 
-document.getElementById("screenshot").addEventListener("click", () => {
-  hideModal();
+const screenshotBtn = document.getElementById("screenshot");
+if (screenshotBtn) screenshotBtn.addEventListener("click", () => {
   const dataUrl = map.getCanvas().toDataURL("image/jpeg");
   const link = document.createElement("a");
   link.href = dataUrl;

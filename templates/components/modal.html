@@ -20,19 +20,16 @@
       <span>Lanes backward</span>
       <input id="line-backward-lanes" type="number" min="0" />
     </label>
-    <label class="field checkbox-field">
-      <input id="line-oneway" type="checkbox" />
-      <span>One-way</span>
-    </label>
-    <button id="reverse-direction" class="tool-button-label_border">Reverse direction</button>
-    <label class="field">
-      <span>Bus lane</span>
-      <select id="line-bus-lane">
-        <option value="none">None</option>
-        <option value="forward">Forward</option>
-        <option value="backward">Backward</option>
-      </select>
-    </label>
+
+    <div class="hstack sb">
+      <label class="field checkbox-field">
+        <input id="line-oneway" type="checkbox" />
+        <span>One-way</span>
+      </label>
+      <button id="reverse-direction" class="tool-button-label_border">Reverse direction</button>
+    </div>
+    
+    <!-- Bus lane temporarily hidden -->
     <button id="save-line" class="tool-button-label_prime" type="button">Save</button>
 
     

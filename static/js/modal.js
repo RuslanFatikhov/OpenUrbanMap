@@ -12,6 +12,7 @@ function openModalForLine(lineId) {
     lanesBackward: line.properties.lanesBackward ?? null,
     oneWay: !!line.properties.oneWay,
     arrowDirection: line.properties.arrowDirection ?? 1,
+    originalArrowDirection: line.properties.arrowDirection ?? 1,
     busLane: line.properties.busLane || "none",
   };
   syncModalFields();
@@ -24,13 +25,23 @@ function hideModal() {
 }
 
 function closeModalDiscard() {
+  if (state.modalDraft && state.selectedLineId) {
+    const line = state.data.lines.find((item) => item.id === state.selectedLineId);
+    if (line) {
+      line.properties.arrowDirection = state.modalDraft.originalArrowDirection;
+      refreshSources();
+      if (typeof ArrowCanvasOverlay !== "undefined") {
+        ArrowCanvasOverlay.redraw();
+      }
+    }
+  }
   hideModal();
 }
 
 function clearSelection() {
+  closeModalDiscard();
   state.selectedLineId = null;
   state.editingLineId = null;
-  hideModal();
   if (map.getLayer("line-selected")) {
     map.setFilter("line-selected", ["all", ["==", ["get", "visible"], true], ["==", ["get", "id"], ""]]);
   }
@@ -49,7 +60,10 @@ function syncModalFields() {
   document.getElementById("line-backward-lanes").value = state.modalDraft.lanesBackward ?? "";
   document.getElementById("line-oneway").checked = !!state.modalDraft.oneWay;
   document.getElementById("line-backward-lanes").disabled = !!state.modalDraft.oneWay;
-  document.getElementById("line-bus-lane").value = state.modalDraft.busLane || "none";
+  const busLaneSelect = document.getElementById("line-bus-lane");
+  if (busLaneSelect) {
+    busLaneSelect.value = state.modalDraft.busLane || "none";
+  }
 }
 
 function updateDraftFromModal() {
@@ -60,7 +74,10 @@ function updateDraftFromModal() {
   state.modalDraft.lanesBackward = numberValue("line-backward-lanes");
   const onewayChecked = document.getElementById("line-oneway").checked;
   state.modalDraft.oneWay = onewayChecked;
-  state.modalDraft.busLane = document.getElementById("line-bus-lane").value;
+  const busLaneSelect = document.getElementById("line-bus-lane");
+  if (busLaneSelect) {
+    state.modalDraft.busLane = busLaneSelect.value;
+  }
   if (onewayChecked) {
     state.modalDraft.lanesBackward = 0;
     document.getElementById("line-backward-lanes").value = "0";
@@ -85,4 +102,13 @@ function saveModalChanges() {
   persistData();
   refreshLists();
   hideModal();
+}
+
+const modalCloseButton = document.getElementById("close-modal");
+if (modalCloseButton) {
+  modalCloseButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    closeModalDiscard();
+  });
 }

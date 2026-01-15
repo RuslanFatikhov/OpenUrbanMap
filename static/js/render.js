@@ -37,6 +37,10 @@ function refreshSources() {
   } else {
     map.getSource("line-vertices").setData({ type: "FeatureCollection", features: [] });
   }
+
+  if (typeof ArrowCanvasOverlay !== "undefined") {
+    ArrowCanvasOverlay.redraw();
+  }
 }
 
 function refreshDrawing() {
