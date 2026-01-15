@@ -120,21 +120,18 @@ map.on("load", () => {
       showMessage("Streetlight icon failed to load.");
     });
 
-  fetch("/api/data")
-    .then((res) => res.json())
-    .then((payload) => {
-      if (!payload.ok) {
-        state.loadError = payload.error;
-        showMessage("Data file error. Working without persistence.");
-        return;
-      }
-      state.data = payload.data;
-      refreshSources();
-      refreshLists();
-      if (typeof ArrowCanvasOverlay !== "undefined") {
-        ArrowCanvasOverlay.redraw();
-      }
-    });
+  const payload = loadPersistedData();
+  if (!payload.ok) {
+    state.loadError = payload.error;
+    showMessage("Data file error. Working without persistence.");
+    return;
+  }
+  state.data = payload.data;
+  refreshSources();
+  refreshLists();
+  if (typeof ArrowCanvasOverlay !== "undefined") {
+    ArrowCanvasOverlay.redraw();
+  }
 });
 
 map.on("click", (event) => {
