@@ -1,0 +1,432 @@
+{
+  "lines": [
+    {
+      "geometry": {
+        "coordinates": [
+          [
+            76.9350167978452,
+            43.237695745474184
+          ],
+          [
+            76.93469309019623,
+            43.23843110354608
+          ],
+          [
+            76.9308735504719,
+            43.26931782297646
+          ]
+        ],
+        "type": "LineString"
+      },
+      "id": "line_1768454591959_643",
+      "properties": {
+        "arrowDirection": 1,
+        "busLane": "none",
+        "lanesBackward": 0,
+        "lanesForward": 4,
+        "name": "Проспект Сейфуллина",
+        "oneWay": true,
+        "totalLanes": 4
+      },
+      "visible": true
+    }
+  ],
+  "trafficLights": [
+    {
+      "geometry": {
+        "coordinates": [
+          76.95399798722707,
+          43.2283724029399
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407899283_182",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.95559268140539,
+          43.228512089032904
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407901978_522",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.94451471429664,
+          43.228004162295804
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407908795_725",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.94058821177782,
+          43.22587192038523
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407913459_608",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.93810432274347,
+          43.22424028914483
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407924225_625",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.93442158839747,
+          43.22178148783959
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407930299_865",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.93168202690748,
+          43.22000693641405
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407932958_801",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.92487584979187,
+          43.21554258315885
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407939566_793",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.92057030041587,
+          43.21247646847067
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407946393_177",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91438840811685,
+          43.208030197265884
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407950991_612",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91369948702362,
+          43.20638867164584
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407954323_763",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91363316037211,
+          43.204643255413544
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407959223_101",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91338176211781,
+          43.203963708840234
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407960540_249",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91369601444148,
+          43.20100873744292
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407963154_924",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.90774625466463,
+          43.20126071678848
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407966015_590",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.90450950085147,
+          43.200413143401676
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407968239_464",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.89972753106605,
+          43.19782747894237
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407974857_582",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.89556733898633,
+          43.194986479824934
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407977444_470",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.88796760699387,
+          43.19472683711709
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768407980369_241",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.85361928829639,
+          43.21737639314205
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454425530_427",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.84590238160229,
+          43.21831500563485
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454434768_102",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.84362750520984,
+          43.217729848093285
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454438307_472",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.84126013519813,
+          43.2171505488557
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454443955_13",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91142113887366,
+          43.236462879708455
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454457448_761",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91459601784868,
+          43.238831768745456
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454461705_629",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91213897656866,
+          43.24015737743102
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454463987_408",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.9221802986022,
+          43.24068946467307
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454474801_510",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91791591213666,
+          43.24272344435005
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454479790_976",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.91773678392553,
+          43.24438713567048
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454480519_173",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.92083248325696,
+          43.2267969331464
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454504875_636",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.92417826205667,
+          43.22680321638376
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454507024_769",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.93773828621579,
+          43.22887587449881
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454514412_468",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.93683256066316,
+          43.23266738016986
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454516955_342",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.9391874516864,
+          43.233723200126406
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454518693_599",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.93625442813897,
+          43.235419920859016
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454525288_341",
+      "visible": true
+    },
+    {
+      "geometry": {
+        "coordinates": [
+          76.93598747509822,
+          43.236058235086176
+        ],
+        "type": "Point"
+      },
+      "id": "light_1768454526112_103",
+      "visible": true
+    }
+  ]
+}

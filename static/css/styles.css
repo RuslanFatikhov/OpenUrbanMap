@@ -1,0 +1,49 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color:var(--black100);
+  background: radial-gradient(circle at top, #fff7eb 0%, var(--white100) 55%, #efe7d8 100%);
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 260px 1fr 320px;
+  height: 100vh;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+.layer-group {
+  margin-bottom: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.is-hidden {
+  display: none;
+}

@@ -1,0 +1,314 @@
+button{
+    cursor: pointer;
+}
+
+.brand-sub {
+  font-size: 12px;
+  color:var(--gray);
+}
+
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--white100);
+  border-right: 1px solid var(--white200);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  margin-top: 8px;
+  margin-left: 8px;
+  border-radius: 16px;
+  width: 290px;
+  height: calc(100vh - 16px);
+}
+
+
+.brand{
+    padding: 16px;
+    border-bottom: 0.5px solid var(--gray100);
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Panel */
+.panel {
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding-bottom: 100px;
+}
+
+
+.panel-title {
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color:var(--gray);
+  
+}
+
+
+
+.layer-group-title {
+    font-size: 12px;
+    line-height: 24px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--gray100);
+  text-transform: uppercase;
+  padding: 0px 16px;
+  margin-top: 16px;
+}
+
+
+/* Cell */
+
+.layer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  padding: 8px;
+}
+
+.layer-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.layer-item-title {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.layer-item:hover{
+    background-color: var(--gray200);
+}
+
+
+/* Tool buttons */
+.s{
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  display: none;
+}
+
+.tool-action{
+  display: flex;
+}
+
+
+
+
+.layer-actions {
+    display: none;
+}
+
+.layer-item:hover .layer-actions {
+    display: flex;
+}
+
+.tool-action_buttons{
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+
+.tool-button {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-button-label_prime{
+  display: flex;
+  min-width: 44px;
+  height: 44px;
+  padding: 12px;
+  background: var(--black100);
+  color: var(--white100);
+  border: none;
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-button-label_border{
+  display: flex;
+  min-width: 44px;
+  height: 44px;
+  padding: 12px;
+  background: none;
+  color: var(--black100);
+  border: 1px solid var(--gray100);
+  border-radius: 16px;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-button .tool-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.tool-button:hover{
+    background-color: var(--gray200);
+}
+
+.tool-button.active {
+  background: var(--gray200);
+}
+
+.tool-button.danger {
+  background: #ffd9d0;
+  border-color: #c83f2a;
+}
+
+.layer-actions {
+    display: none;
+}
+
+.layer-item:hover .layer-actions {
+    display: flex;
+}
+
+/* Toolbar */
+.toolbar {
+    position: fixed;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px;
+  background:var(--white100);
+  z-index: 100;
+  border-radius: 16px;
+}
+
+.tool-actions{
+  display: none;
+  flex-direction: row;
+}
+
+
+/* Modal */
+
+
+.modal {
+  background: var(--white100);
+  position: fixed;
+  right: 0px;
+  top: 0px;
+  width: 290px;
+  z-index: 1000;
+  padding: 16px;
+  display: none;
+  flex-direction: column;
+  gap: 12px;
+  border-radius: 16px;
+  margin-top: 16px;
+  margin-right: 16px;
+}
+
+.modal-body{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.modal.is-open {
+  display: flex;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.close-button {
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.field input,
+.field select {
+  padding: 6px 8px;
+  border: 1px solid var(--white200);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.checkbox-field {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 8px;
+}
+
+
+/* Map */
+
+.workspace {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  width: 100vw;
+  height: 100%;
+}
+
+.map {
+  flex: 1;
+}
+
+.message {
+  position: absolute;
+  top: 72px;
+  right: 24px;
+  background: #fffaf1;
+  border: 1px solid var(--white200);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  max-width: 240px;
+  z-index: 3;
+}

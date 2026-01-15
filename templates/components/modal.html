@@ -1,0 +1,44 @@
+<aside id="line-modal" class="modal">
+  <div class="modal-header">
+    <div class="modal-title">Line attributes</div>
+    <button id="close-modal" class="close-button" type="button">✕</button>
+  </div>
+  <div class="modal-body">
+    <label class="field">
+      <span>Street name</span>
+      <input id="line-name" type="text" placeholder="Без имени" />
+    </label>
+    <label class="field">
+      <span>Total lanes</span>
+      <input id="line-total-lanes" type="number" min="0" />
+    </label>
+    <label class="field">
+      <span>Lanes forward</span>
+      <input id="line-forward-lanes" type="number" min="0" />
+    </label>
+    <label class="field">
+      <span>Lanes backward</span>
+      <input id="line-backward-lanes" type="number" min="0" />
+    </label>
+    <label class="field checkbox-field">
+      <input id="line-oneway" type="checkbox" />
+      <span>One-way</span>
+    </label>
+    <button id="reverse-direction" class="tool-button-label_border">Reverse direction</button>
+    <label class="field">
+      <span>Bus lane</span>
+      <select id="line-bus-lane">
+        <option value="none">None</option>
+        <option value="forward">Forward</option>
+        <option value="backward">Backward</option>
+      </select>
+    </label>
+    <button id="save-line" class="tool-button-label_prime" type="button">Save</button>
+
+    
+    <!--div class="modal-actions">
+      <button id="edit-geometry" class="tool-button-label">Edit geometry</button>
+      <button id="delete-line" class="tool-button-label danger">Delete line</button>
+    </div-->
+  </div>
+</aside>
